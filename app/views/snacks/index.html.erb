@@ -1,0 +1,23 @@
+<h1>Liste des snacks</h1>
+
+<% @all_snacks.each do |snack| %>
+	<p><a href="/snacks/<%= snack.id %>">
+	<% if snack.category %>
+	<%= snack.brand %></a> <i>(<%= snack.category.name %>)</i>
+	<% else %>
+	<%= snack.brand %>
+	<% end %>
+	
+	</p>
+<% end %>
+
+<%= form_tag "/snacks", method: "post" do %>
+  <input type="text" name="brand" placeholder= "Nom du restaurant" />
+  <input type="text" name="adress" placeholder= "Adresse du restaurant" />
+  <select name="category_id"> 
+  	<% @all_categories.each do |category| %>
+      <option value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Ajouter à la liste" />
+<% end %>
