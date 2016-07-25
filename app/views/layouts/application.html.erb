@@ -2,8 +2,9 @@
 <html>
 <head>
   <title>SnackandCo</title>
-  <%= stylesheet_link_tag    'default', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'default', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDVmavr21JzqkX2LK2G0uriwjIJs0jnlU0" %>
+  <%= javascript_include_tag 'application','data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>

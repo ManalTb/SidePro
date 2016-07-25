@@ -10,14 +10,16 @@
 	
 	</p>
 <% end %>
-
 <%= form_tag "/snacks", method: "post" do %>
   <input type="text" name="brand" placeholder= "Nom du restaurant" />
-  <input type="text" name="adress" placeholder= "Adresse du restaurant" />
+  <input id="geocomplete" name="adress" placeholder= "Adresse du restaurant" />
   <select name="category_id"> 
   	<% @all_categories.each do |category| %>
       <option value="<%= category.id %>"><%= category.name %></option>
     <% end %>
   </select>
   <input type="submit" value="Ajouter à la liste" />
+<br/><br/>
+  </body>
+
 <% end %>

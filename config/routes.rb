@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'restos' => 'restos#index'
   get 'snacks' => 'snacks#index'
   get 'snacks/:id' => 'snacks#show'
   patch 'snacks/:id' => 'snacks#update'
