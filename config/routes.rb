@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'snacks/:id' => 'snacks#show'
   patch 'snacks/:id' => 'snacks#update'
   post 'snacks'=> 'snacks#create'
+  delete 'snacks/:id' => 'snacks#destroy'
 
   root 'pages#home'
 
