@@ -11,5 +11,9 @@
 
 <%= yield %>
 
+<%- unless params[:action] == "home" -%>
+	<a href="./" style="font-size: 28px "><p>Retour à l'accueil</p></a>
+<%- end -%>
+	
 </body>
 </html>
