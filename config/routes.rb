@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :users
-  get 'sessions/new'
-
-  get 'users/new'
+  resources :sessions, :only => [:new, :create, :destroy]
 
   get 'restos' => 'restos#index'
   get 'snacks' => 'snacks#index'
@@ -10,6 +8,13 @@ Rails.application.routes.draw do
   patch 'snacks/:id' => 'snacks#update'
   post 'snacks'=> 'snacks#create'
   delete 'snacks/:id' => 'snacks#destroy'
+  
+  get  'users' => 'users#index'
+
+#Connexion/déconnexion
+  get 'signup'  => 'users#new'
+  get 'signin' => 'sessions#new'
+  get 'signout' => 'sessions#destroy'
 
   root 'pages#home'
 

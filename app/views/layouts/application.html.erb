@@ -9,13 +9,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%- unless params[:action] != "home" -%>
+    <nav class="round">
+        <ul>
+            <li><%= link_to "Sign in", '/signin' %></li>
+            <li><%= link_to "Home", '/' %></li>
+            <li><%= link_to "Users", '/users' %></li>
+            <li><%= link_to "Help", '/' %></li>
+         </ul>
+         </nav>
+<%- end -%>
 
-<%= yield %>
 
 <%- unless params[:action] == "home" -%>
-	<a href="/" style="font-size: 24px "><p>Retour à l'accueil</p></a>
+	<nav>
+		<li><%= link_to "Home", '/' %></li>
+		<!-- Afficher sur toutes les pages, le nom de l'user et la possibilité de sign out-->
+	</nav>
   </div>
 <%- end -%>
-	
+	<%= yield %>
 </body>
 </html>

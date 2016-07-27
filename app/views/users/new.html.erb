@@ -1,5 +1,6 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div style="width: 30%;margin: auto">
+<h1 style="text-align: center">Sign up</h1>
+<br/>
 
 <%= simple_form_for(@user) do |f| %>
   <%= f.input :name %>
@@ -8,3 +9,4 @@
   <%= f.input :password_confirmation %>
   <%= f.button :submit %>
 <% end %>
+</div>

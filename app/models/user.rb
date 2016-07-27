@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 	before_save :encrypted_password
 
 	def has_password?(submitted_password)
-		encrypted_password = encrypted(submitted_password)
+		encrypted_password = encrypt(submitted_password)
 	end
 
 	def self.authenticate(email, submitted_password)

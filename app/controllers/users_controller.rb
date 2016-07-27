@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+def index
+	@all_users = User.all
+end
+
   def new
   	@user = User.new
   end
@@ -6,7 +10,8 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(params[:user])
   	if @user.save
-  		redirect_to "/user", notice: 'User was successfully created !'
+  		flash[:success] = "User was successfully created !"
+  		redirect_to "/users"
   	else
   		render :new
   	end
