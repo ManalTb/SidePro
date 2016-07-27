@@ -20,36 +20,28 @@ $("#geocomplete").geocomplete({ details: "form" });
 
 });
 
-function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 6
-  });
-  var infoWindow = new google.maps.InfoWindow({map: map});
 
-  // Try HTML5 geolocation.
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
+function initialize() {
+	map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 19,
+        center: new google.maps.LatLng(48.858565, 2.347198),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });  
+} 
 
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
-      map.setCenter(pos);
-    }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
+if (navigator.geolocation)
+{
+	var watchId = navigator.geolocation.watchPosition(
+	successCallBack, null,
+	{enableHighAccuracy : true}); //utilisation du GPS pour coords ++ précises, delai de chargemt, 															    	//duree de vie max d'une coordonnee envoyée par un user
 }
+else
+	alert("your browser is not allowed to access to your location");
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
-}
+function successCallBack(position){
+	map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude)); //centre la map sur de nouvelles coordonnées
+	var marker = new google.maps.Marker({
+  		position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude), 
+  		map: map
+	}); 
+};

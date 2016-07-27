@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160722125135) do
-=======
-ActiveRecord::Schema.define(version: 20160721120917) do
->>>>>>> 5cbabe482e9db085c3735b4b9c93194b2f5960ef
+ActiveRecord::Schema.define(version: 20160727090204) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -42,5 +38,16 @@ ActiveRecord::Schema.define(version: 20160721120917) do
   end
 
   add_index "snacks", ["category_id"], name: "index_snacks_on_category_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "encrypted_password"
+    t.string   "salt"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end

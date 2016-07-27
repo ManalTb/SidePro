@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :users
+  get 'sessions/new'
+
+  get 'users/new'
+
   get 'restos' => 'restos#index'
   get 'snacks' => 'snacks#index'
   get 'snacks/:id' => 'snacks#show'

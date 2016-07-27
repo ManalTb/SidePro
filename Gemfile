@@ -28,6 +28,9 @@ gem 'faker', '~> 1.6.5'
 gem 'jquery-ui-rails'
 gem 'gmaps4rails'
 gem 'gmaps-autocomplete-rails'
+gem 'rails-footnotes', '~> 4.0'
+gem 'simple_form'
+gem 'protected_attributes'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
