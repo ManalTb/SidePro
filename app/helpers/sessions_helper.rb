@@ -10,7 +10,7 @@ module SessionsHelper
 	end
 
 	def signed_in?
-		!current_user.nil?
+		!@current_user.nil?
 	end
 
 	def sign_out
@@ -23,6 +23,7 @@ module SessionsHelper
 	end
 
 	def deny_access
-		redirect_to signin_path, :notice => "Please sign in to access this page"
+		redirect_to signin_path
+		flash[:notice] = "Please sign in to access this page"
 	end
 end

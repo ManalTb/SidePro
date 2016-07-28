@@ -1,4 +1,7 @@
 class SnacksController < ApplicationController
+  helper_method :deny_access
+  before_filter :authenticate, :only => [:create]
+
   def index
   	@all_snacks = Snack.all
   	@all_categories = Category.all
@@ -25,4 +28,9 @@ class SnacksController < ApplicationController
   Snack.find(params[:id]).destroy
   redirect_to "/snacks"
 end
+
+  private
+    def authenticate
+      deny_access unless signed_in?
+    end
 end
