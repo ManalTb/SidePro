@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :sessions, :only => [:new, :create, :destroy]
+  devise_for :users
 
   get 'restos' => 'restos#index'
   get 'snacks' => 'snacks#index'
@@ -10,11 +9,6 @@ Rails.application.routes.draw do
   delete 'snacks/:id' => 'snacks#destroy'
   
   get  'users' => 'users#index'
-
-#Connexion/déconnexion
-  get 'signup'  => 'users#new'
-  get 'signin' => 'sessions#new'
-  get 'signout' => 'sessions#destroy'
 
   root 'pages#home'
 
