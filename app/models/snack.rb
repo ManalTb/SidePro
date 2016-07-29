@@ -1,6 +1,8 @@
 class Snack < ActiveRecord::Base
 	belongs_to :category
 
+	
+
 	validates :brand, presence: {
 		message: "Brand required"
 	}

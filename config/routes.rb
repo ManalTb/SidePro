@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, except: :create
+  resources :snacks 
 
   get 'restos' => 'restos#index'
-  get 'snacks' => 'snacks#index'
-  get 'snacks/:id' => 'snacks#show'
-  patch 'snacks/:id' => 'snacks#update'
-  post 'snacks'=> 'snacks#create'
-  delete 'snacks/:id' => 'snacks#destroy'
   
-  get  'users' => 'users#index'
 
   root 'pages#home'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,5 +1,9 @@
 class SnacksController < ApplicationController
-  before_filter :authenticate, :only => [:create]
+  before_filter :authenticate_user!, only: :create
+
+  def new
+    @snack = Snack.new
+  end
 
   def index
   	@all_snacks = Snack.all
@@ -19,12 +23,24 @@ class SnacksController < ApplicationController
   end
 
   def create
-  	Snack.create brand: params[:brand], adress: params[:adress], category_id: params[:category_id]
-  	redirect_to '/snacks'
+
+  	@snack = Snack.new snack_params
+    if @snack.save
+      redirect_to action: :index
+    else
+      render :new
+    end
   end
 
   def destroy
-  Snack.find(params[:id]).destroy
-  redirect_to "/snacks"
+    Snack.find(params[:id]).destroy
+    redirect_to "/snacks"
+  end
+
+  private
+
+  def snack_params    
+     params.require(:snack).permit(:brand, :adress, :category_id)
+  end
 end
-end
+

@@ -4,6 +4,7 @@
 <i><%= @onesnack.adress %></i>
 </p>
 
+<div class="form_inputs">
 <%= form_tag "/snacks/#{@onesnack.id}", method: "patch" do %>
   <input type="text" name="brand" value="<%= @onesnack.brand %>" />
   <input id="geocomplete" name="adress" value="<%= @onesnack.adress %>" />
@@ -12,5 +13,6 @@
 <%= form_tag "/snacks/#{@onesnack.id}", method: "delete" do %>
   <input type="submit" value="Supprimer le snack" />
 <% end %>
-<br/>
+</div>
+
 <a href="/snacks">Revenir à la liste</a>

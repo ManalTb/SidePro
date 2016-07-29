@@ -30,7 +30,7 @@ gem 'gmaps4rails'
 gem 'gmaps-autocomplete-rails'
 gem 'rails-footnotes', '~> 4.0'
 gem 'simple_form'
-gem 'protected_attributes'
+#gem 'protected_attributes'
 gem 'devise'
 
 # Use ActiveModel has_secure_password
