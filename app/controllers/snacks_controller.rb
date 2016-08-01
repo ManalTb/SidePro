@@ -1,29 +1,33 @@
 class SnacksController < ApplicationController
-  before_filter :authenticate_user!, only: :create
+   before_filter :authenticate_user!, except: [:index, :show]
 
   def new
     @snack = Snack.new
   end
 
   def index
-  	@all_snacks = Snack.all
-  	@all_categories = Category.all
+  	@snacks = Snack.all
+  	@categories = Category.all
   end
 
   def show
-  	@onesnack = Snack.find(params[:id])
+  	@snack = Snack.find(params[:id])
+  end
+
+  def edit
+    @snack = Snack.find(params[:id])
   end
 
   def update
-  	@onesnack = Snack.find(params[:id])
-  	@onesnack.brand = (params[:brand])
-  	@onesnack.adress = (params[:adress])
-  	@onesnack.save
-  	redirect_to "/snacks/#{params[:id]}"
+    @snack = Snack.find(params[:id])
+    if @snack.update_attributes snack_params
+  	  redirect_to @snack
+    else
+      render :edit
+    end
   end
 
   def create
-
   	@snack = Snack.new snack_params
     if @snack.save
       redirect_to action: :index
@@ -34,7 +38,7 @@ class SnacksController < ApplicationController
 
   def destroy
     Snack.find(params[:id]).destroy
-    redirect_to "/snacks"
+    redirect_to action: :index
   end
 
   private

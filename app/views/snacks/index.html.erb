@@ -1,6 +1,7 @@
 <h1>Liste des snacks</h1>
 
-<% @all_snacks.each do |snack| %>
+
+<% @snacks.each do |snack| %>
 	<p><a href="/snacks/<%= snack.id %>">
 	<% if snack.category %>
 	<%= snack.brand %></a> <i>(<%= snack.category.name %>)</i>
@@ -8,6 +9,10 @@
 	<%= snack.brand %>
 	<% end %>
 	</p>
-<% end %>
+ <% end %>
+
+
+
+	<%= link_to 'Ajouter un snack', new_snack_path, class: 'btn btn-success' %>
 
 

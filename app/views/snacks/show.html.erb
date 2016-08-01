@@ -1,18 +1,17 @@
 <h1>Affichage d'un snack</h1>
 
-<p><%= @onesnack.brand %><br/>
-<i><%= @onesnack.adress %></i>
+<p><%= @snack.brand %><br/>
+<i><%= @snack.adress %></i>
 </p>
-
-<div class="form_inputs">
-<%= form_tag "/snacks/#{@onesnack.id}", method: "patch" do %>
-  <input type="text" name="brand" value="<%= @onesnack.brand %>" />
-  <input id="geocomplete" name="adress" value="<%= @onesnack.adress %>" />
-  <input type="submit" value="Modifier le resto" />
+<!-- Simplifier ? -->
+<% if current_user %>
+	<%= link_to new_snack_path do %>
+	<button type="button" class="btn btn-info">Modifier</button>
+	<% end %>
+<% else %>
+	<%= link_to user_session_path do %>
+	<button type="button" class="btn btn-info">Modifier</button>
+	<% end %>
 <% end %>
-<%= form_tag "/snacks/#{@onesnack.id}", method: "delete" do %>
-  <input type="submit" value="Supprimer le snack" />
-<% end %>
-</div>
 
-<a href="/snacks">Revenir à la liste</a>
+<%= link_to 'Revenir à la liste', snacks_path %>
