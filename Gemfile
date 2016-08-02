@@ -32,7 +32,7 @@ gem 'rails-footnotes', '~> 4.0'
 gem 'simple_form'
 #gem 'protected_attributes'
 gem 'devise'
-
+gem 'slim-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

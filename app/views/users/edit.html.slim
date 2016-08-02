@@ -1,0 +1,13 @@
+h1 Modifier le profil
+
+= simple_form_for @user do |f|
+	= f.input :name, label: 'Pseudo', placeholder: 'Choisissez votre pseudo'
+	= f.input :email 
+	= f.input :current_password
+	= f.input :password, label: 'New password'
+	= f.input :password_confirmation
+	= f.button :submit 
+ 
+= link_to 'Supprimer le compte', user_path, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' }
+
+ 

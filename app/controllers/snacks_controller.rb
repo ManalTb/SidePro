@@ -21,6 +21,7 @@ class SnacksController < ApplicationController
   def update
     @snack = Snack.find(params[:id])
     if @snack.update_attributes snack_params
+      flash[:success] = "Snack successfully updated !"
   	  redirect_to @snack
     else
       render :edit
@@ -30,6 +31,7 @@ class SnacksController < ApplicationController
   def create
   	@snack = Snack.new snack_params
     if @snack.save
+       flash[:success] = "Snack successfully created!"
       redirect_to action: :index
     else
       render :new
@@ -38,6 +40,7 @@ class SnacksController < ApplicationController
 
   def destroy
     Snack.find(params[:id]).destroy
+       flash[:danger] = "Snack deleted :("
     redirect_to action: :index
   end
 

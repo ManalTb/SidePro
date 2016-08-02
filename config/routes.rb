@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   
   resources :users, except: :create
   resources :snacks 
-
+  resource :user, only: [:edit] do
+    collection do
+      patch 'update_password'
+    end
+  end
   get 'restos' => 'restos#index'
   
 

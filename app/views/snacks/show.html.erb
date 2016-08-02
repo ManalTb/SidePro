@@ -3,15 +3,7 @@
 <p><%= @snack.brand %><br/>
 <i><%= @snack.adress %></i>
 </p>
-<!-- Simplifier ? -->
-<% if current_user %>
-	<%= link_to new_snack_path do %>
-	<button type="button" class="btn btn-info">Modifier</button>
-	<% end %>
-<% else %>
-	<%= link_to user_session_path do %>
-	<button type="button" class="btn btn-info">Modifier</button>
-	<% end %>
-<% end %>
+
+<%= link_to 'Modifier', edit_snack_path, class: 'btn btn-info' %>
 
 <%= link_to 'Revenir à la liste', snacks_path %>

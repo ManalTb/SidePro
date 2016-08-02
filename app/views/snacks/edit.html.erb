@@ -6,5 +6,6 @@
 	<%= f.association :category %>
 	<%= f.button :submit %>
 
+<%= link_to 'Supprimer', snack_path, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure ?'} %>
 <%= link_to 'Annuler', snacks_path %>
 <% end %>
