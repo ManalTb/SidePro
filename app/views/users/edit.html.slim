@@ -1,13 +1,18 @@
-h1 Modifier le profil
+h1 Modifier votre profil
 
-= simple_form_for @user do |f|
-	= f.input :name, label: 'Pseudo', placeholder: 'Choisissez votre pseudo'
-	= f.input :email 
-	= f.input :current_password
-	= f.input :password, label: 'New password'
-	= f.input :password_confirmation
-	= f.button :submit 
- 
+= simple_form_for @user, url: user_path(@user, part: 'email') do |f|
+    = f.input :name, label: 'Pseudo', placeholder: 'Choisissez votre pseudo'
+    = f.input :email 
+    = f.button :submit 
+end
+
+h2 Modifier le mot de passe 
+		
+= simple_form_for @user, url: user_path(@user, part: 'password') do |f|
+		= f.input :current_password
+		= f.input :password, label: 'New password'
+		= f.input :password_confirmation
+		= f.button :submit 
+end
+		
 = link_to 'Supprimer le compte', user_path, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' }
-
- 

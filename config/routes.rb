@@ -1,15 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+
   resources :users, except: :create
-  resources :snacks 
-  resource :user, only: [:edit] do
-    collection do
-      patch 'update_password'
-    end
-  end
-  get 'restos' => 'restos#index'
-  
+
+  resources :snacks
 
   root 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.

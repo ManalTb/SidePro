@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+
+  before_action only: [:edit, :update] do
+    params[:part] ||= 'password'
+  end
+
   def show
   	@user = User.find(params[:id])
   end
@@ -10,12 +15,12 @@ class UsersController < ApplicationController
 
   def update
   	@user = User.find(current_user.id)
-  	if @user.update_with_password user_params
-  		flash[:success] = "Account successfully updated"
-  		redirect_to user_path
-  	else
-  		render :edit
-  	end
+    if update_user
+      flash[:success] = "#{user_params.key?(:password) ? 'Password' : 'Profile'} successfully updated"
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -24,9 +29,18 @@ class UsersController < ApplicationController
   	redirect_to root_path
   end
 
+
   private
 
-  def user_params    
+  def update_user
+    if user_params.key?(:password)
+      @user.update_with_password user_params
+    else
+      @user.update_attributes user_params
+    end
+  end
+
+  def user_params
      params.require(:user).permit(:email, :name, :current_password, :password, :password_confirmation)
   end
 end
