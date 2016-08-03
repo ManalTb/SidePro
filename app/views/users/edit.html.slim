@@ -1,6 +1,6 @@
 h1 Modifier votre profil
 
-= simple_form_for @user, url: user_path(@user, part: 'email') do |f|
+= simple_form_for @user do |f|
     = f.input :name, label: 'Pseudo', placeholder: 'Choisissez votre pseudo'
     = f.input :email 
     = f.button :submit 
@@ -8,7 +8,7 @@ end
 
 h2 Modifier le mot de passe 
 		
-= simple_form_for @user, url: user_path(@user, part: 'password') do |f|
+= simple_form_for @user do |f|
 		= f.input :current_password
 		= f.input :password, label: 'New password'
 		= f.input :password_confirmation
