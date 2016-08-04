@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'faker', '~> 1.6.5' 
+gem 'faker', '~> 1.6.5'
 gem 'jquery-ui-rails'
 gem 'gmaps4rails'
 gem 'gmaps-autocomplete-rails'

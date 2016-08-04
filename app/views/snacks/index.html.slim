@@ -1,0 +1,14 @@
+h1 Liste des snacks
+
+.container
+	- @snacks.each do |snack|
+		div class="article"
+			= link_to  snack_path(snack) do
+				- if snack.category
+						img src="p.png"
+						h4= snack.brand
+						.label.label-default= snack.category.name
+				hr
+	
+	.row
+		= link_to 'Ajouter un resto', new_snack_path, class: "btn btn-success"
