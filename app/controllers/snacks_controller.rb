@@ -6,7 +6,7 @@ class SnacksController < ApplicationController
   end
 
   def index
-  	@snacks = Snack.all
+  	@snacks = Snack.page(params[:page]).per(6)
   	@categories = Category.all
   end
 
@@ -46,8 +46,7 @@ class SnacksController < ApplicationController
 
   private
 
-  def snack_params    
-     params.require(:snack).permit(:brand, :adress, :category_id)
+  def snack_params
+     params.require(:snack).permit(:brand, :adress, :category_id, :image)
   end
 end
-
