@@ -1,13 +1,26 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-h1 {
-    color: brown;
+body {
+    background-color: #CBF4BC;
 }
 
-img {
-  float: left;
-  margin-right: 10px;
+h1 {
+    color: #650C0C;
+    margin-bottom: 100px;
+    font-size: 42px;
+}
+
+.row {
+  margin-bottom: 100px;
+
+}
+ .snack_img {
+   height: 150px;
+   background-position: center center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   box-shadow: 8px 8px 10px silver;
 }
 
 .alert-notice {
@@ -18,19 +31,19 @@ img {
 }
 
 .article {
+  // border: 1px solid grey;
+  // border-left: none;
+  // border-right: none;
   text-align: left;
-  margin-bottom: 50px;
-  border: 1px solid black;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
-.description {
+.address {
+  font-style: italic;
 }
 
 #map {
   height: 500px;
   margin-bottom: 15px;
-}
-
-#address {
-  font-style: italic;
 }

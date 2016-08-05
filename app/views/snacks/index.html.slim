@@ -2,21 +2,19 @@ h1 Liste des snacks
 
 
 - @snacks.each do |snack|
-	div class="article"
 		= link_to  snack_path(snack) do
 			- if snack.category
-					.row
-						.col-md-2
-							= image_tag snack.image.url(:thumb)
+					.row class="article"
+						.col-md-2 class="snack_img" style="background-image: url(#{snack.image.url})"
 						.col-md-8
-							div class="description"
+							div 
 								h4 = snack.brand
-								h5 id="address"
+								h5 class="address"
 									= snack.adress
 								.label.label-info= snack.category.name
 						.col-md-2
 							h3 Notes
-
+							
 .row
 	.col-md-12
 		= link_to 'Ajouter un resto', new_snack_path, class: "btn btn-success"
