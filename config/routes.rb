@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users
 
   resources :users, except: :create
 
   resources :snacks
-
+  resources :ratings
   root 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

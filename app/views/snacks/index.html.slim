@@ -14,6 +14,8 @@ h1 Liste des snacks
 								.label.label-info= snack.category.name
 						.col-md-2
 							h3 Notes
+							= link_to 'Je note', new_rating_path(:snack_id => snack.id), class: "btn btn-info"
+								
 							
 .row
 	.col-md-12

@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'faker', '~> 1.6.5'
+gem 'slim-rails'
+gem 'table_print'
+
 gem 'jquery-ui-rails'
 gem 'gmaps4rails'
 gem 'gmaps-autocomplete-rails'
@@ -33,7 +36,6 @@ gem 'simple_form'
 gem "paperclip", "~> 5.0.0"
 #gem 'protected_attributes'
 gem 'devise'
-gem 'slim-rails'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 # Use ActiveModel has_secure_password

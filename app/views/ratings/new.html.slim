@@ -1,0 +1,7 @@
+h1 Noter le Snack
+
+= simple_form_for @rating do |f|
+  
+  = f.input :snack_id, as: :hidden
+  = f.input :mark, as: :select, collection: [1, 2, 3, 4, 5]
+  = f.button :submit

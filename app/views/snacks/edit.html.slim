@@ -1,0 +1,11 @@
+h1 Modifier le snack
+
+= simple_form_for @snack do |f| 
+	= f.input :brand, placeholder: "Nom du restaurant"
+	= f.input :adress, placeholder: "Adresse du restaurant", input_html: { id: 'geocomplete'}
+	= f.association :category 
+	= f.input :image, as: :file 
+	= f.button :submit 
+
+= link_to 'Supprimer', snack_path, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure ?'}
+= link_to 'Annuler', snacks_path
