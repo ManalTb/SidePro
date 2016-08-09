@@ -8,6 +8,7 @@ class RatingsController < ApplicationController
   def create
     @rating = Rating.new rating_params
     if @rating.save
+    binding.pry
       flash[:success] = "Rate successfully created"
       redirect_to snacks_path
     else
@@ -29,7 +30,8 @@ class RatingsController < ApplicationController
   end
 
   private
+
     def rating_params
-      params.require(:rating).permit(:mark, :snack_id, current_user)
+      params.require(:rating).permit(:mark, :snack_id).update(user: current_user)
     end
 end
