@@ -29,14 +29,13 @@ class UsersController < ApplicationController
   	redirect_to root_path
   end
 
-
   private
 
   def update_user
     if user_params.key?(:password)
       @user.update_with_password user_params
     else
-      @user.update_attributes user_params
+      @user.update_attributes user_params #update_attribute method skip the validations
     end
   end
 

@@ -6,13 +6,16 @@ class RatingsController < ApplicationController
   end
 
   def create
-    @rating = Rating.new rating_params
-    if @rating.save
-    binding.pry
-      flash[:success] = "Rate successfully created"
-      redirect_to snacks_path
-    else
-      render :new
+    if not Rating.where(user_id: rating_params[:user].id, snack_id: rating_params[:snack_id]).exists?
+      @rating = Rating.new rating_params
+      if @rating.save
+        flash[:success] = "Rate successfully created"
+        redirect_to snacks_path
+      else
+        render :new
+      end
+    elsif  Rating.where(user_id: rating_params[:user].id, snack_id: rating_params[:snack_id]).exists?
+      render :edit
     end
   end
 
@@ -22,8 +25,9 @@ class RatingsController < ApplicationController
 
   def update
     @rating = Rating.find(params[:id])
-    if @rating.update_attributes rating_params
+    if @rating.update_attributes rating_params #modifier la note
       flash[:success] = "Rate successfully updated"
+      redirect_to snacks_path
     else
       render :edit
     end

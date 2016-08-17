@@ -1,6 +1,5 @@
 h1 Liste des snacks
 
-
 - @snacks.each do |snack|
 		= link_to  snack_path(snack) do
 			- if snack.category
@@ -14,7 +13,12 @@ h1 Liste des snacks
 								.label.label-info= snack.category.name
 						.col-md-2
 							h3 Notes
-							= link_to 'Je note', new_rating_path(:snack_id => snack.id), class: "btn btn-info"
+							= snack.ratings.average(:mark)
+							.row	
+								-if update_rating_btn(current_user, snack)
+								 	= link_to 'Modifier ma note', edit_rating_path(Rating.where(user_id: current_user.id).first.id), class: "btn btn-primary"
+								-else
+									= link_to 'Je note', new_rating_path(:snack_id => snack.id), class: "btn btn-info"
 								
 							
 .row
