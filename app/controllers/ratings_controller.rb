@@ -10,12 +10,12 @@ class RatingsController < ApplicationController
       @rating = Rating.new rating_params
       if @rating.save
         flash[:success] = "Rate successfully created"
-        redirect_to snacks_path
+        redirect_to snacks_path(page: params[:page])
       else
         render :new
       end
     elsif  Rating.where(user_id: rating_params[:user].id, snack_id: rating_params[:snack_id]).exists?
-      render :edit
+      redirect_to edit_rating_path(Rating.where(user_id: current_user.id).first, page: params[:page])
     end
   end
 
@@ -27,7 +27,7 @@ class RatingsController < ApplicationController
     @rating = Rating.find(params[:id])
     if @rating.update_attributes rating_params #modifier la note
       flash[:success] = "Rate successfully updated"
-      redirect_to snacks_path
+      redirect_to snacks_path(page: params[:page])
     else
       render :edit
     end
