@@ -1,31 +1,31 @@
 class RatingsController < ApplicationController
     before_filter :authenticate_user!
 
+    before_filter :get_snack
+
   def new
-    @rating = Rating.new snack_id: params[:snack_id]
+    @rating = @snack.ratings.new
   end
 
   def create
-    if not Rating.where(user_id: rating_params[:user].id, snack_id: rating_params[:snack_id]).exists?
-      @rating = Rating.new rating_params
-      if @rating.save
-        flash[:success] = "Rate successfully created"
-        redirect_to snacks_path(page: params[:page])
-      else
-        render :new
-      end
-    elsif  Rating.where(user_id: rating_params[:user].id, snack_id: rating_params[:snack_id]).exists?
-      redirect_to edit_rating_path(Rating.where(user_id: current_user.id).first, page: params[:page])
+    @rating = @snack.ratings.new rating_params
+    if @rating.save
+      flash[:success] = "Rate successfully created"
+      redirect_to snacks_path(page: params[:page])
+    else
+      render :new
     end
   end
 
+
   def edit
-    @rating = Rating.find(params[:id])
+    @rating = @snack.ratings.find(params[:id])
   end
 
   def update
-    @rating = Rating.find(params[:id])
-    if @rating.update_attributes rating_params #modifier la note
+
+    @rating = @snack.ratings.find(params[:id])
+    if @rating.update_attributes rating_params
       flash[:success] = "Rate successfully updated"
       redirect_to snacks_path(page: params[:page])
     else
@@ -36,6 +36,10 @@ class RatingsController < ApplicationController
   private
 
     def rating_params
-      params.require(:rating).permit(:mark, :snack_id).update(user: current_user)
+      params.require(:rating).permit(:mark).update(user: current_user)
+    end
+
+    def get_snack
+      @snack =  Snack.find(params[:snack_id])
     end
 end

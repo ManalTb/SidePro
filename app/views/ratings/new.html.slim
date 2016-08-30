@@ -1,7 +1,7 @@
 h1 Noter le Snack
 
-= simple_form_for @rating do |f|
-  = f.input :snack_id, as: :hidden
+= simple_form_for [@snack, @rating] do |f|
+  = f.error_messages
   = f.input :mark, as: :select, collection: [1, 2, 3, 4, 5]
   = hidden_field_tag :page, params[:page]
   = f.button :submit

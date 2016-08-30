@@ -31,8 +31,8 @@ class SnacksController < ApplicationController
   def create
   	@snack = Snack.new snack_params
     if @snack.save
-       flash[:success] = "Snack successfully created!"
-      redirect_to action: :index
+      flash[:success] = "Snack successfully created!"
+      redirect_to snack_path(@snack)
     else
       render :new
     end
@@ -40,7 +40,7 @@ class SnacksController < ApplicationController
 
   def destroy
     Snack.find(params[:id]).destroy
-       flash[:danger] = "Snack deleted :("
+    flash[:danger] = "Snack deleted :("
     redirect_to action: :index
   end
 

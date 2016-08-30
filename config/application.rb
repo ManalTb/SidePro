@@ -18,11 +18,12 @@ module SidePro
     ::Sass::Script::Value::Number.precision = [8, ::Sass::Script::Value::Number.precision].max
 
     config.generators do |g|
-      g.factory_girl false
+      g.factory_girl true
+      g.factory_girl dir: 'spec/factories'
     end
 
     config.active_record.raise_in_transactional_callbacks = true
-    
+
   end
 
 end

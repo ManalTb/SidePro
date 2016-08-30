@@ -8,4 +8,8 @@ class Rating < ActiveRecord::Base
 
   validates :user, :snack,
     presence: true
+
+  validates :user_id,
+    uniqueness: { scope: :snack_id }
+
 end

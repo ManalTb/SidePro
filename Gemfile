@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
 
+source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'faker', '~> 1.6.5'
 gem 'slim-rails'
 gem 'table_print'
-
+gem 'dynamic_form'
 gem 'jquery-ui-rails'
 gem 'gmaps4rails'
 gem 'gmaps-autocomplete-rails'
